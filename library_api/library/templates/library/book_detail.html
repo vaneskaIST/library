@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+{% load static %}
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{{ book.title }}</title>
+    <link rel="stylesheet" type="text/css" href="{% static 'css/style.css' %}">
+</head>
+<body>
+    <nav>
+        <a href="{% url 'index' %}">Главная</a>
+        <a href="{% url 'book_list' %}">Книги</a>
+        <a href="{% url 'rental_history' %}">История аренды</a>
+    </nav>
+
+    <div class="container">
+        <h1>{{ book.title }}</h1>
+        <p><strong>Author:</strong> {{ book.author }}</p>
+        <p><strong>Published Date:</strong> {{ book.published_date }}</p>
+        <p><strong>ISBN:</strong> {{ book.isbn }}</p>
+        <p><strong>Status:</strong> {{ book.available|yesno:"Available,Not Available" }}</p>
+
+        {% if book.available %}
+            <a class="button" href="{% url 'rent_book' book.id %}">Rent this book</a>
+        {% endif %}
+        <a href="{% url 'book_list' %}">Back to list</a>
+    </div>
+</body>
+</html>

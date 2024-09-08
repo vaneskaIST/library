@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+{% load static %}
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Управление Библиотекой</title>
+    <link rel="stylesheet" type="text/css" href="{% static 'css/style.css' %}">
+</head>
+<body>
+    <nav>
+        <a href="{% url 'index' %}">Главная</a>
+        <a href="{% url 'book_list' %}">Книги</a>
+        <a href="{% url 'rental_history' %}">История аренды</a>
+    </nav>
+
+    <div class="container">
+        <h1>Добро пожаловать в библиотеку</h1>
+        <p>Это главная страница системы управления библиотекой</p>
+    </div>
+</body>
+</html>

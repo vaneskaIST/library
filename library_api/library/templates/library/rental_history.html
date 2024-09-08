@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+{% load static %}
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>История аренды</title>
+    <link rel="stylesheet" type="text/css" href="{% static 'css/style.css' %}">
+</head>
+<body>
+    <nav>
+        <a href="{% url 'index' %}">Главная</a>
+        <a href="{% url 'book_list' %}">Книги</a>
+        <a href="{% url 'rental_history' %}">История аренды</a>
+    </nav>
+
+    <div class="container">
+        <h1>История аренды</h1>
+        <table>
+            <thead>
+                <tr>
+                    <th>Книга</th>
+                    <th>Дата начала аренды</th>
+                    <th>Дата нокончания аренды</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for rental in rentals %}
+                <tr>
+                    <td>{{ rental.book.title }}</td>
+                    <td>{{ rental.rental_date }}</td>
+                    <td>{{ rental.return_date|default:"Not returned yet" }}</td>
+                </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+    </div>
+</body>
+</html>
